@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tattoo Data Collector</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tattoo Data Collector</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- PWA support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
 </head>
 <body>
-  <div class="container">
-    <h1>Tattoo Data Collector</h1>
+    <div class="container">
+        <header>
+            <h1>Tattoo Data Collector</h1>
+            <p>Record tattoo details for AI training</p>
+        </header>
+        
+        <section class="form-section">
+            <form id="tattooForm">
+                <div class="form-group">
+                    <label for="imageUpload">Tattoo Image</label>
+                    <input type="file" id="imageUpload" name="image" accept="image/*" capture="environment">
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Price ($)</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeInMinutes">Time (minutes)</label>
+                    <input type="number" id="timeInMinutes" name="timeInMinutes" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tags">Tags (comma separated)</label>
+                    <input type="text" id="tags" name="tags" placeholder="black, arm, script, etc">
+                </div>
+                
+                <button type="submit" class="submit-btn">Save Tattoo Data</button>
+            </form>
+        </section>
+        
+        <section class="results-section">
+            <h2>Tattoo Database</h2>
+            <div id="tattooList" class="tattoo-list">
+                <!-- Tattoo items will be added here via JavaScript -->
+            </div>
+        </section>
+    </div>
     
-    <div class="card">
-      <h2>Add New Tattoo</h2>
-      <form id="tattooForm">
-        <div class="form-group">
-          <label for="imageUpload">Tattoo Image</label>
-          <input type="file" id="imageUpload" name="image" accept="image/*" required>
-          <div id="imagePreview" class="image-preview"></div>
-        </div>
-        
-        <div class="form-group">
-          <label for="price">Price ($)</label>
-          <input type="number" id="price" name="price" required min="0" step="0.01">
-        </div>
-        
-        <div class="form-group">
-          <label for="timeInMinutes">Time (minutes)</label>
-          <input type="number" id="timeInMinutes" name="timeInMinutes" required min="0">
-        </div>
-        
-        <div class="form-group">
-          <label for="tags">Tags (comma separated)</label>
-          <input type="text" id="tags" name="tags" placeholder="e.g., geometric, floral, minimalist">
-        </div>
-        
-        <button type="submit" class="btn-submit">Save Tattoo Data</button>
-      </form>
-    </div>
-
-    <div class="card">
-      <h2>Collected Data</h2>
-      <div id="tattooList" class="tattoo-list">
-        <!-- Tattoo entries will be loaded here -->
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
